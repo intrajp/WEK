@@ -1,0 +1,70 @@
+<?php
+// This file is part of WEK.
+// Copyright 2020 Shintaro Fujiwara
+// To salute original program, I leave following lines untact.
+
+
+namespace PhpOffice\PhpSpreadsheet\Chart;
+
+class Title
+{
+    /**
+     * Title Caption.
+     *
+     * @var string
+     */
+    private $caption;
+
+    /**
+     * Title Layout.
+     *
+     * @var Layout
+     */
+    private $layout;
+
+    /**
+     * Create a new Title.
+     *
+     * @param null|mixed $caption
+     * @param null|Layout $layout
+     */
+    public function __construct($caption = null, Layout $layout = null)
+    {
+        $this->caption = $caption;
+        $this->layout = $layout;
+    }
+
+    /**
+     * Get caption.
+     *
+     * @return string
+     */
+    public function getCaption()
+    {
+        return $this->caption;
+    }
+
+    /**
+     * Set caption.
+     *
+     * @param string $caption
+     *
+     * @return Title
+     */
+    public function setCaption($caption)
+    {
+        $this->caption = $caption;
+
+        return $this;
+    }
+
+    /**
+     * Get Layout.
+     *
+     * @return Layout
+     */
+    public function getLayout()
+    {
+        return $this->layout;
+    }
+}

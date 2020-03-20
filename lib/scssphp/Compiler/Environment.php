@@ -1,0 +1,49 @@
+<?php
+// This file is part of WEK.
+// Copyright 2020 Shintaro Fujiwara
+// To salute original program, I leave following lines untact.
+
+/**
+ * SCSSPHP
+ *
+ * @copyright 2012-2019 Leaf Corcoran
+ *
+ * @license http://opensource.org/licenses/MIT MIT
+ *
+ * @link http://scssphp.github.io/scssphp
+ */
+
+namespace ScssPhp\ScssPhp\Compiler;
+
+/**
+ * Compiler environment
+ *
+ * @author Anthon Pang <anthon.pang@gmail.com>
+ */
+class Environment
+{
+    /**
+     * @var \ScssPhp\ScssPhp\Block
+     */
+    public $block;
+
+    /**
+     * @var \ScssPhp\ScssPhp\Compiler\Environment
+     */
+    public $parent;
+
+    /**
+     * @var array
+     */
+    public $store;
+
+    /**
+     * @var array
+     */
+    public $storeUnreduced;
+
+    /**
+     * @var integer
+     */
+    public $depth;
+}
