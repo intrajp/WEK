@@ -171,6 +171,7 @@ $CFG->backuptempdir        = $CFG->tempdir.'/backup';
 $CFG->cachedir             = $CFG->dataroot.'/cache';
 $CFG->localcachedir        = $CFG->dataroot.'/localcache';
 $CFG->admin                = $config->admin;
+// still we need this
 $CFG->docroot              = 'https://docs.moodle.org';
 $CFG->langotherroot        = $CFG->dataroot.'/lang';
 $CFG->langlocalroot        = $CFG->dataroot.'/lang';
@@ -192,7 +193,7 @@ $memlimit = @ini_get('memory_limit');
 if (!empty($memlimit) and $memlimit != -1) {
     if (get_real_size($memlimit) < get_real_size($minrequiredmemory)) {
         // do NOT localise - lang strings would not work here and we CAN not move it to later place
-        echo "Moodle requires at least {$minrequiredmemory}B of PHP memory.<br />";
+        echo "WEK requires at least {$minrequiredmemory}B of PHP memory.<br />";
         echo "Please contact server administrator to fix PHP.ini memory settings.";
         die;
     }
@@ -252,7 +253,7 @@ if (isset($_GET['help'])) {
 
 //first time here? find out suitable dataroot
 if (is_null($CFG->dataroot)) {
-    $CFG->dataroot = __DIR__.'/../moodledata';
+    $CFG->dataroot = __DIR__.'/../wekdata';
 
     $i = 0; //safety check - dirname might return some unexpected results
     while(is_dataroot_insecure()) {
@@ -262,7 +263,7 @@ if (is_null($CFG->dataroot)) {
             $CFG->dataroot = ''; //can not find secure location for dataroot
             break;
         }
-        $CFG->dataroot = dirname($parrent).DIRECTORY_SEPARATOR.'moodledata';
+        $CFG->dataroot = dirname($parrent).DIRECTORY_SEPARATOR.'wekdata';
     }
     $config->dataroot = $CFG->dataroot;
     $config->stage    = INSTALL_WELCOME;
@@ -499,8 +500,6 @@ if ($config->stage == INSTALL_DATABASETYPE) {
     $databases = array('mysqli' => moodle_database::get_driver_instance('mysqli', 'native'),
                        'mariadb'=> moodle_database::get_driver_instance('mariadb', 'native'),
                        'pgsql'  => moodle_database::get_driver_instance('pgsql',  'native'),
-                       'oci'    => moodle_database::get_driver_instance('oci',    'native'),
-                       'sqlsrv' => moodle_database::get_driver_instance('sqlsrv', 'native'), // MS SQL*Server PHP driver
                       );
 
     echo '<div class="row mb-4">';
