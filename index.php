@@ -27,10 +27,12 @@
  */
 
 $selinux = exec("getenforce", $output, $return_var);
+
 if ($return_var == 1) {
     echo "Please use *nix OS ad use SELinux.\n";
     die;
 }
+
 if ($selinux == "Disabled") {
     echo "SELinux is Disabled.\n";
     echo "Please set SELinux Enforcing.\n";

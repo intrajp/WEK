@@ -41,6 +41,19 @@
 require_once(__DIR__ . '/../config.php');
 require_once($CFG->dirroot . '/my/lib.php');
 
+$selinux = exec("getenforce", $output, $return_var);
+
+if ($return_var == 1) {
+    echo "Please use *nix OS ad use SELinux.\n";
+    die;
+}
+
+if ($selinux == "Disabled") {
+    echo "SELinux is Disabled.\n";
+    echo "Please set SELinux Enforcing.\n";
+    die;
+}
+
 redirect_if_major_upgrade_required();
 
 // TODO Add sesskey check to edit
